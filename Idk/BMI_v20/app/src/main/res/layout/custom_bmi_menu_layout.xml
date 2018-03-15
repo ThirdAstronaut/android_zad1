@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/custom_bmi_menu_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageButton
+        android:id="@+id/back_arrow"
+        android:src="?attr/homeAsUpIndicator"
+        android:background="?attr/actionBarItemBackground"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:scaleType="centerInside"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/back_arrow_string"/>
+</android.support.constraint.ConstraintLayout>
