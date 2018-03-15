@@ -1,0 +1,41 @@
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fullscreen_content_controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="example.com.bmi_v20.AboutAuthorActivity">
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher1"
+        android:layout_width="315dp"
+        android:layout_height="271dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/fullscreen_content"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fullscreen_content"
+        app:layout_constraintVertical_bias="0.0">
+    </ImageSwitcher>
+
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right|bottom"
+        android:text="@string/author_credentials"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSwitcher1"
+        app:layout_constraintTop_toTopOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
