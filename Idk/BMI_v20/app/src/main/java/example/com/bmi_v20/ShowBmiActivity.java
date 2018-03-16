@@ -50,9 +50,12 @@ public class ShowBmiActivity extends AppCompatActivity {
     }
 
     private void setBacgroundColor() {
-        if (resultToShow < 18.5)
+        double lowerBoundBMI = 18.5;
+        double upperBoundBMI = 24.9;
+
+        if (resultToShow < lowerBoundBMI)
             findViewById(R.id.show_bmi_layout).setBackgroundColor(getResources().getColor(R.color.yellow));
-        else if (resultToShow >= 18.5 && resultToShow < 24.9)
+        else if (resultToShow >= lowerBoundBMI && resultToShow < upperBoundBMI)
             findViewById(R.id.show_bmi_layout).setBackgroundColor(getResources().getColor(R.color.blue));
         else
             findViewById(R.id.show_bmi_layout).setBackgroundColor(getResources().getColor(R.color.red));
