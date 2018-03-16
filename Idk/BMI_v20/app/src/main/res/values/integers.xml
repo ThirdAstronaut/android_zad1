@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="saved_high_score_default_key">-1</integer>
+    <integer name="default_photo_index">0</integer>
 </resources>

@@ -23,10 +23,9 @@ public class MainActivity extends AppCompatActivity {
     static final String PASSED_RESULT_VALUE = "passed_result_value";
     private EditText weightInput;
     private EditText heightInput;
-    private Switch unitsSwitch;
     private double result = 0.0;
     private boolean isSwitchChecked;
-    SharedPreferences sharedpreferences;
+    private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
 
     @Override
@@ -34,16 +33,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         weightInput = findViewById(R.id.weight_editText);
         heightInput = findViewById(R.id.height_editText);
-        unitsSwitch = findViewById(R.id.change_units_switch);
+        Switch unitsSwitch = findViewById(R.id.change_units_switch);
         Button countButton = findViewById(R.id.count_button);
 
         restoreData();
         final Toast toast = Toast.makeText(this, R.string.wrong_input_data_toast, Toast.LENGTH_SHORT);
         final Toast emptyFiledsToast = Toast.makeText(this, R.string.fill_both_fields_warning, Toast.LENGTH_SHORT);
-
 
         countButton.setOnClickListener(new View.OnClickListener() {
             @Override

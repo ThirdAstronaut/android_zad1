@@ -32,15 +32,3 @@ public class BmiForImperialMetrics extends BMI {
                 (getHeight() > HEIGHT_LOW_LIMIT_CENTI * CENTIS_TO_INCHES_RATE);
     }
 }
-
-
-//1 pound =
-/*
-0.45359237 kilograms
-
-        1 inch =
-        2.54 centimeters
-
-        1 foot =
-        30.48 centimeters
-*/

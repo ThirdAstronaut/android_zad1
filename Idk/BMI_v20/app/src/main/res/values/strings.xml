@@ -11,12 +11,10 @@
     <string name="back_title">Go back</string>
     <string name="author_credentials">Rafał Lechowicz</string>
     <string name="author_photo_description">Some meme lol xD</string>
-    <string name="english_units_string">English units</string>
+    <string name="english_units_string">Imperial units [in, lb]</string>
     <string name="imperial_units_string">Imperial units</string>
 
     <string name="title_activity_about_author">AboutAuthorActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="fill_both_fields_warning">Fill in both fields</string>
     <string name="back_arrow_string">Back arrow</string>
     <string name="wrong_input_data_toast">Correct your input data</string>
@@ -26,4 +24,5 @@
     <string name="saved_height_value_text">saved_height_value</string>
     <string name="saved_isChecked_value_text">saved_isChecked_value</string>
     <string name="empty_string"></string>
+    <string name="saved_photo_index_value_text">saved_photo_index_value</string>
 </resources>

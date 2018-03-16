@@ -47,18 +47,23 @@ public class AboutAuthorActivity extends AppCompatActivity {
         }
     };
 
-    private int i = 0;
+    private int i;
     private View mContentView;
     private boolean mVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_author);
 
         mVisible = true;
         mContentView = findViewById(R.id.fullscreen_content);
+        ActionBar mActionBar = getSupportActionBar();
+        LayoutInflater li = LayoutInflater.from(this);
+        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
+        ImageButton addContent = customView.findViewById(R.id.back_arrow);
+        final ImageSwitcher imageSwitcher = findViewById(R.id.imageSwitcher1);
 
 
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -68,22 +73,21 @@ public class AboutAuthorActivity extends AppCompatActivity {
             }
         });
 
-        ActionBar mActionBar = getSupportActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater li = LayoutInflater.from(this);
-        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
-        mActionBar.setCustomView(customView);
-        mActionBar.setDisplayShowCustomEnabled(true);
-        ImageButton addContent = customView.findViewById(R.id.back_arrow);
+        if (mActionBar != null) {
+            mActionBar.setDisplayShowHomeEnabled(false);
+            mActionBar.setDisplayShowTitleEnabled(false);
+            mActionBar.setCustomView(customView);
+            mActionBar.setDisplayShowCustomEnabled(true);
+        }
+
         addContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        final ImageSwitcher sw = findViewById(R.id.imageSwitcher1);
-        sw.setFactory(new ViewSwitcher.ViewFactory() {
+
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
                 ImageView myView = new ImageView(getApplicationContext());
@@ -94,20 +98,20 @@ public class AboutAuthorActivity extends AppCompatActivity {
                 return myView;
             }
         });
-        sw.setImageResource(R.drawable.author0);
-        final int[] tab = new int[6];
+
+        imageSwitcher.setImageResource(R.drawable.author0);
+        final int[] tab = new int[5];
 
         tab[0] = R.drawable.author0;
         tab[1] = R.drawable.author1;
         tab[2] = R.drawable.author2;
         tab[3] = R.drawable.author3;
-        tab[4] = R.drawable.author4;
-        tab[5] = R.drawable.author5;
-        sw.setOnClickListener(new View.OnClickListener() {
+        tab[4] = R.drawable.author5;
+        imageSwitcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                i = (i + 1) % 6;
-                sw.setImageResource(tab[i]);
+                i = (i + 1) % tab.length;
+                imageSwitcher.setImageResource(tab[i]);
             }//new Random().nextInt(4)
         });
     }
@@ -152,4 +156,5 @@ public class AboutAuthorActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
 }
