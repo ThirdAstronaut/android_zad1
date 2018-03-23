@@ -1,7 +1,6 @@
 package example.com.bmi_v20;
 
 import org.junit.Test;
-
 import example.com.bmi_v20.Model.BMI;
 import example.com.bmi_v20.Model.BmiForKgM;
 import example.com.bmi_v20.Model.BmiForImperialMetrics;
