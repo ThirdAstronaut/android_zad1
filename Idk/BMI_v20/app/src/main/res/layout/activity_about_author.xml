@@ -1,28 +1,28 @@
 <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/fullscreen_content_controls"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fullscreen_content_controls"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="example.com.bmi_v20.AboutAuthorActivity">
+
+    <TextView
+        android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="example.com.bmi_v20.AboutAuthorActivity">
-
-        <TextView
-            android:id="@+id/fullscreen_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/author_credentials"
-            android:textAlignment="center"
-            android:textSize="@dimen/hugeText_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            android:gravity="bottom"
-            app:layout_constraintTop_toBottomOf="@+id/imageSwitcher1"/>
+        android:gravity="bottom"
+        android:text="@string/author_credentials"
+        android:textAlignment="center"
+        android:textSize="@dimen/hugeText_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_switcher"/>
 
     <ImageSwitcher
-        android:id="@+id/imageSwitcher1"
+        android:id="@+id/image_switcher"
         android:layout_width="368dp"
         android:layout_height="327dp"
         android:layout_centerHorizontal="true"
