@@ -30,5 +30,4 @@ public abstract class BMI {
     public double getHeight() {
         return height;
     }
-
 }
