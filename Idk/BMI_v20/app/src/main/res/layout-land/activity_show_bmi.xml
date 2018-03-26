@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/BMI_textView"
+        android:id="@+id/BMI_text_view"
         android:layout_width="204dp"
         android:layout_height="115dp"
         android:layout_marginBottom="8dp"
@@ -18,14 +18,14 @@
         android:text="@string/BMI_string"
         android:textAlignment="center"
         android:textSize="@dimen/hugeText_size"
-        app:layout_constraintBottom_toTopOf="@+id/BMI_value_textView"
+        app:layout_constraintBottom_toTopOf="@+id/BMI_value_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/BMI_value_textView"
+        android:id="@+id/BMI_value_text_view"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginBottom="32dp"
@@ -36,6 +36,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BMI_textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/BMI_text_view"/>
 
 </android.support.constraint.ConstraintLayout>
