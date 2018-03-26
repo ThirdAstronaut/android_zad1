@@ -13,36 +13,41 @@ import static example.com.bmi_v20.MainActivity.PASSED_RESULT_VALUE;
 public class ShowBmiActivity extends AppCompatActivity {
 
     private double resultToShow;
+    private ImageButton addContent;
+    private TextView bmiValueTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_bmi);
 
-        TextView bmiValueTextView = findViewById(R.id.BMI_value_textView);
+        initViews();
 
         resultToShow = getResultData();
         bmiValueTextView.setText(String.format("%.2f", resultToShow));
+
         setBacgroundColor();
 
-        LayoutInflater li = LayoutInflater.from(this);
-        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
-        ActionBar mActionBar = getSupportActionBar();
-
-        if (mActionBar != null) {
-            mActionBar.setDisplayShowHomeEnabled(false);
-            mActionBar.setDisplayShowTitleEnabled(false);
-            mActionBar.setCustomView(customView);
-            mActionBar.setDisplayShowCustomEnabled(true);
-        }
-
-        ImageButton addContent = customView.findViewById(R.id.back_arrow);
         addContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+    }
+
+    private void initViews() {
+        bmiValueTextView = findViewById(R.id.BMI_value_text_view);
+        LayoutInflater li = LayoutInflater.from(this);
+        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
+        addContent = customView.findViewById(R.id.back_arrow);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setCustomView(customView);
+            actionBar.setDisplayShowCustomEnabled(true);
+        }
     }
 
     private double getResultData() {
