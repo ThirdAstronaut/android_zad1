@@ -23,22 +23,26 @@ public class MainActivity extends AppCompatActivity {
     static final String PASSED_RESULT_VALUE = "passed_result_value";
     private EditText weightInput;
     private EditText heightInput;
+    private Button countButton;
+    private Switch unitsSwitch;
     private double result = 0.0;
     private boolean isSwitchChecked;
     private SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "MyPrefs";
+    private static final String MyPREFERENCES = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        weightInput = findViewById(R.id.weight_editText);
-        heightInput = findViewById(R.id.height_editText);
-        Switch unitsSwitch = findViewById(R.id.change_units_switch);
-        Button countButton = findViewById(R.id.count_button);
-
+        initViews();
         restoreData();
+        onClickListnersHandler();
+
+        unitsSwitch.setChecked(isSwitchChecked);
+    }
+
+    private void onClickListnersHandler() {
         final Toast toast = Toast.makeText(this, R.string.wrong_input_data_toast, Toast.LENGTH_SHORT);
         final Toast emptyFiledsToast = Toast.makeText(this, R.string.fill_both_fields_warning, Toast.LENGTH_SHORT);
 
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         unitsSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,9 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 heightInput.setText("");
             }
         });
-        unitsSwitch.setChecked(isSwitchChecked);
+    }
 
-
+    private void initViews() {
+        weightInput = findViewById(R.id.weight_edit_text);
+        heightInput = findViewById(R.id.height_edit_text);
+        unitsSwitch = findViewById(R.id.change_units_switch);
+        countButton = findViewById(R.id.count_button);
     }
 
     @Override
@@ -119,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.putBoolean(String.valueOf(R.string.saved_isChecked_value_text), isSwitchChecked);
 
-
         editor.apply();
         Toast.makeText(this, R.string.saved_toast, Toast.LENGTH_SHORT).show();
     }
@@ -148,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
             bmi = new BmiForImperialMetrics(values[0], values[1]);
             if (bmi.isDataValid())
                 return bmi.calculateBMI();
-
         } else {
 
             bmi = new BmiForKgM(values[0], values[1]);
