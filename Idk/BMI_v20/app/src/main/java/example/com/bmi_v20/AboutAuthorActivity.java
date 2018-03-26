@@ -15,8 +15,21 @@ import android.widget.ViewSwitcher;
 
 public class AboutAuthorActivity extends AppCompatActivity {
 
-    private static final int UI_ANIMATION_DELAY = 300;
+    private final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
+    private View mContentView;
+    private ImageButton addContent;
+    private ImageSwitcher imageSwitcher;
+    private boolean mVisible;
+    private int i;
+
+    private final Runnable mHideRunnable = new Runnable() {
+        @Override
+        public void run() {
+            hide();
+        }
+    };
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -40,45 +53,40 @@ public class AboutAuthorActivity extends AppCompatActivity {
         }
     };
 
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
-
-    private int i;
-    private View mContentView;
-    private boolean mVisible;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_author);
 
         mVisible = true;
-        mContentView = findViewById(R.id.fullscreen_content);
-        ActionBar mActionBar = getSupportActionBar();
-        LayoutInflater li = LayoutInflater.from(this);
-        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
-        ImageButton addContent = customView.findViewById(R.id.back_arrow);
-        final ImageSwitcher imageSwitcher = findViewById(R.id.imageSwitcher1);
+        initViews();
+        onClickListnersHandler();
+        setImageSwitcher();
+    }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        delayedHide(100);
+    }
 
+    @SuppressLint("InlinedApi")
+    private void show() {
+        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+        mVisible = true;
+
+        mHideHandler.removeCallbacks(mHidePart2Runnable);
+        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+    }
+
+    private void onClickListnersHandler() {
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggle();
             }
         });
-
-        if (mActionBar != null) {
-            mActionBar.setDisplayShowHomeEnabled(false);
-            mActionBar.setDisplayShowTitleEnabled(false);
-            mActionBar.setCustomView(customView);
-            mActionBar.setDisplayShowCustomEnabled(true);
-        }
 
         addContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +106,9 @@ public class AboutAuthorActivity extends AppCompatActivity {
                 return myView;
             }
         });
+    }
 
+    private void setImageSwitcher() {
         imageSwitcher.setImageResource(R.drawable.author0);
         final int[] tab = new int[5];
 
@@ -116,11 +126,20 @@ public class AboutAuthorActivity extends AppCompatActivity {
         });
     }
 
+    private void initViews() {
+        mContentView = findViewById(R.id.fullscreen_content);
+        ActionBar mActionBar = getSupportActionBar();
+        LayoutInflater li = LayoutInflater.from(this);
+        View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
+        addContent = customView.findViewById(R.id.back_arrow);
+        imageSwitcher = findViewById(R.id.image_switcher);
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        delayedHide(100);
+        if (mActionBar != null) {
+            mActionBar.setDisplayShowHomeEnabled(false);
+            mActionBar.setDisplayShowTitleEnabled(false);
+            mActionBar.setCustomView(customView);
+            mActionBar.setDisplayShowCustomEnabled(true);
+        }
     }
 
     private void toggle() {
@@ -142,19 +161,8 @@ public class AboutAuthorActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
     }
 
-    @SuppressLint("InlinedApi")
-    private void show() {
-        mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-        mVisible = true;
-
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
-    }
-
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
-
 }
