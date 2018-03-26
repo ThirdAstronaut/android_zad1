@@ -31,4 +31,5 @@ public class BmiForImperialMetrics extends BMI {
                 (getHeight() < HEIGHT_MAX_LIMIT_CENTI * CENTIS_TO_INCHES_RATE) &&
                 (getHeight() > HEIGHT_LOW_LIMIT_CENTI * CENTIS_TO_INCHES_RATE);
     }
+    
 }
