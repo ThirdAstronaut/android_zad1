@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
         restoreData();
-        onClickListnersHandler();
+        onClickListenersHandler();
 
         unitsSwitch.setChecked(isSwitchChecked);
     }
 
-    private void onClickListnersHandler() {
+    private void onClickListenersHandler() {
         final Toast toast = Toast.makeText(this, R.string.wrong_input_data_toast, Toast.LENGTH_SHORT);
-        final Toast emptyFiledsToast = Toast.makeText(this, R.string.fill_both_fields_warning, Toast.LENGTH_SHORT);
+        final Toast emptyFieldToast = Toast.makeText(this, R.string.fill_both_fields_warning, Toast.LENGTH_SHORT);
 
         countButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         toast.show();
                     }
                 } catch (IllegalArgumentException e) {
-                    emptyFiledsToast.show();
+                    emptyFieldToast.show();
                 }
             }
         });
