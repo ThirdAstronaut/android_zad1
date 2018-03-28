@@ -60,7 +60,7 @@ public class AboutAuthorActivity extends AppCompatActivity {
 
         mVisible = true;
         initViews();
-        onClickListnersHandler();
+        onClickListenersHandler();
         setImageSwitcher();
     }
 
@@ -80,7 +80,7 @@ public class AboutAuthorActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
 
-    private void onClickListnersHandler() {
+    private void onClickListenersHandler() {
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +110,7 @@ public class AboutAuthorActivity extends AppCompatActivity {
 
     private void setImageSwitcher() {
         imageSwitcher.setImageResource(R.drawable.author0);
+
         final int[] tab = new int[5];
 
         tab[0] = R.drawable.author0;
@@ -122,7 +123,7 @@ public class AboutAuthorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 i = (i + 1) % tab.length;
                 imageSwitcher.setImageResource(tab[i]);
-            }//new Random().nextInt(4)
+            }
         });
     }
 
