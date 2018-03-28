@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import static example.com.bmi_v20.MainActivity.PASSED_RESULT_VALUE;
 
 public class ShowBmiActivity extends AppCompatActivity {
@@ -24,9 +26,9 @@ public class ShowBmiActivity extends AppCompatActivity {
         initViews();
 
         resultToShow = getResultData();
-        bmiValueTextView.setText(String.format("%.2f", resultToShow));
+        bmiValueTextView.setText(String.format(Locale.getDefault(),"%.2f", resultToShow));
 
-        setBacgroundColor();
+        setBackgroundColor();
 
         addContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +56,7 @@ public class ShowBmiActivity extends AppCompatActivity {
         return getIntent().getDoubleExtra(PASSED_RESULT_VALUE, resultToShow);
     }
 
-    private void setBacgroundColor() {
+    private void setBackgroundColor() {
         double lowerBoundBMI = 18.5;
         double upperBoundBMI = 24.9;
 
