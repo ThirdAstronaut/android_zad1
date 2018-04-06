@@ -15,7 +15,7 @@ import static example.com.bmi_v20.MainActivity.PASSED_RESULT_VALUE;
 public class ShowBmiActivity extends AppCompatActivity {
 
     private double resultToShow;
-    private ImageButton addContent;
+    private ImageButton backArrow;
     private TextView bmiValueTextView;
 
     @Override
@@ -30,7 +30,7 @@ public class ShowBmiActivity extends AppCompatActivity {
 
         setBackgroundColor();
 
-        addContent.setOnClickListener(new View.OnClickListener() {
+        backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -42,7 +42,7 @@ public class ShowBmiActivity extends AppCompatActivity {
         bmiValueTextView = findViewById(R.id.BMI_value_text_view);
         LayoutInflater li = LayoutInflater.from(this);
         View customView = li.inflate(R.layout.custom_bmi_menu_layout, null);
-        addContent = customView.findViewById(R.id.back_arrow);
+        backArrow = customView.findViewById(R.id.back_arrow);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowHomeEnabled(false);
